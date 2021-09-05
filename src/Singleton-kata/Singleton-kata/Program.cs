@@ -72,8 +72,15 @@ namespace Singleton_kata
             public Male(string NameS, Female MotherS, Male FatherS)
             {
                 Name = NameS;
-                Mother = MotherS;
-                Father = FatherS;
+                if (MotherS != null && FatherS != null)
+                {
+                    Mother = MotherS;
+                    Father = FatherS;
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
             }
             protected Male()
             {
