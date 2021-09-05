@@ -197,8 +197,8 @@ namespace Singleton_kata
             {
                 Assert.IsTrue(typeof(Human).IsAbstract);
             }
- 
-        public static void Humans_can_reproduce_when_there_is_a_name_a_mother_and_a_father()
+            [Test]
+            public static void Humans_can_reproduce_when_there_is_a_name_a_mother_and_a_father()
         {
             var adam = Adam.GetInstance();
             var eve = Eve.GetInstance(adam);
@@ -214,8 +214,8 @@ namespace Singleton_kata
             Assert.AreEqual(seth, ((Human)enos).Father);
             Assert.AreEqual(azura, ((Human)enos).Mother);
         }
- 
-        public static void Father_and_mother_are_essential_for_reproduction()
+            [Test]
+            public static void Father_and_mother_are_essential_for_reproduction()
         {
             // There is just 1 way to reproduce 
             Assert.AreEqual(1, typeof(Male).GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
@@ -239,21 +239,30 @@ namespace Singleton_kata
             static void Main(string[] args)
             {
                 SampleTests.Adam_is_unique();
+                Console.WriteLine("(TEST) Adam is unique");
                 SampleTests.Adam_is_unique_and_only_GetInstance_can_return_adam();
+                Console.WriteLine("(TEST) Adam is unique and getInstance can return adam");
                 SampleTests.Adam_is_unique_and_cannot_be_overriden();
+                Console.WriteLine("(TEST) Adam cannot be overriden");
                 SampleTests.Adam_is_a_human();
+                Console.WriteLine("(TEST) Adam is a human");
                 SampleTests.Adam_is_a_male();
+                Console.WriteLine("(TEST) Adam is a male");
 
                 // EVA TEST
                 // This test works well but stops flow of the program.
                 //SampleTests.Eve_can_only_be_create_of_a_rib_of_adam();
                 //SampleTests.Eve_is_unique_and_created_from_a_rib_of_adam();
-                /*SampleTests.Eve_is_a_human();
+                SampleTests.Eve_is_a_human();
+                Console.WriteLine("(TEST) Adam is a human");
                 SampleTests.Eve_is_a_female();
+                Console.WriteLine("(TEST) Adam is a female");
                 SampleTests.Reproduction_always_result_in_a_male_or_female();
-                SampleTests.Humans_can_reproduce_when_there_is_a_name_a_mother_and_a_father();*/
-
+                Console.WriteLine("(TEST) Reproduction always result in a male or female");
+                SampleTests.Humans_can_reproduce_when_there_is_a_name_a_mother_and_a_father();
+                Console.WriteLine("(TEST) Humans can reproduce with a mother and a father");
                 SampleTests.Father_and_mother_are_essential_for_reproduction();
+                Console.WriteLine("(TEST) Mother and Father are essential for reproduction");
                 Console.WriteLine("¡All OK!");
             }
         }
